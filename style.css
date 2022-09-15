@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    background: url("./you_can_do_this.jpg");
+    background-size: cover;
+    background-position: 50% 40%;
+}
+h1 {
+    letter-spacing: 2px;
+}
+  
+.main-title {
+    text-align: center;
+    font-size: 3rem;
+}
+
+.drag-list {
+    display: flex;
+    align-items: flex-start;
+    gap: 200px;
+}

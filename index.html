@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sprint Board</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 class="main-title">Personal Sprint Board</h1>
+    <div class="drag-container">
+        <ul class="drag-list">
+            <li class="drag-column todo-column">
+                <span class="header">
+                    <h1>To Do</h1>
+                </span>
+                <div id="todo-content">
+                    <ul class="drag-task-list" id="todo-list"></ul>
+                </div>
+                <div class="add-btn-group">
+                    <div class="add-btn">
+                        <button>+ Add task</button>
+                    </div>
+                    <div class="add-btn solid">
+                        <button>Save task</button>
+                    </div>
+                </div>
+                <div class="add-container">
+                    <div class="add-task"></div>
+                </div>
+            </li>
+            <li class="drag-column progress-column">
+                <span class="header">
+                    <h1>In Progress</h1>
+                </span>
+                <div id="progress-content">
+                    <ul class="drag-task-list" id="progress-list"></ul>
+                </div>
+                <div class="add-btn-group">
+                    <div class="add-btn">
+                        <button>+ Add task</button>
+                    </div>
+                    <div class="add-btn solid">
+                        <button>Save task</button>
+                    </div>
+                </div>
+                <div class="add-container">
+                    <div class="add-task"></div>
+                </div>
+            </li>
+            <li class="drag-column complete-column">
+                <span class="header">
+                    <h1>Complete</h1>
+                </span>
+                <div id="complete-content">
+                    <ul class="drag-task-list" id="complete-list"></ul>
+                </div>
+                <div class="add-btn-group">
+                    <div class="add-btn">
+                        <button>+ Add task</button>
+                    </div>
+                    <div class="add-btn solid">
+                        <button>Save task</button>
+                    </div>
+                </div>
+                <div class="add-container">
+                    <div class="add-task"></div>
+                </div>
+            </li>
+            <li class="drag-column not-sure-column">
+                <span class="header">
+                    <h1>Not Sure</h1>
+                </span>
+                <div id="not-sure-content">
+                    <ul class="drag-task-list" id="not-sure-list"></ul>
+                </div>
+                <div class="add-btn-group">
+                    <div class="add-btn">
+                        <button>+ Add task</button>
+                    </div>
+                    <div class="add-btn solid">
+                        <button>Save task</button>
+                    </div>
+                </div>
+                <div class="add-container">
+                    <div class="add-task"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="countdown-container">
+        <div class="input-container" id="input-container">
+            <h1>Sprint End</h1>       
+            <form class="form" id="countdown-form">
+                <label for="date-picker">Select a Date</label>
+                <input type="date" id="date-picker"/>
+                <button type="submit">Submit Sprint Countdown</button>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
