@@ -55,8 +55,11 @@ function filterArray(array) {
 function createItemEl(columnEl, column, item, index) {
   const listEl = document.createElement("li");
   listEl.textContent = item;
+  listEl.draggable = true;
   listEl.id = index;
   listEl.classList.add("drag-item");
+  listEl.setAttribute('ondragstart', 'drag(event)');
+  listEl.contentEditable = true;
   columnEl.appendChild(listEl);
 }
 
@@ -126,30 +129,27 @@ saveItemBtns.forEach((button, i) =>
 function rebuildArrays() {
   todoListArray = [];
   for (let i = 0; i < todoListEl.children.length; i++) {
-    todoListArray.push(todoListEl.children[i].value);
+    todoListArray.push(todoListEl.children[i].textContent);
   }
   progressListArray = [];
   for (let i = 0; i < progressListEl.children.length; i++) {
-    progressListArray.push(progressListEl.children[i].value);
+    progressListArray.push(progressListEl.children[i].textContent);
   }
   completeListArray = [];
   for (let i = 0; i < completeListEl.children.length; i++) {
-    completeListArray.push(completeListEl.children[i].value);
+    completeListArray.push(completeListEl.children[i].textContent);
   }
   notSureListArray = [];
   for (let i = 0; i < notSureListEl.children.length; i++) {
-    notSureListArray.push(notSureListEl.children[i].value);
+    notSureListArray.push(notSureListEl.children[i].textContent);
   }
   updateDOM();
 }
 
-listColumns[0].addEventListener("dragstart", (e) => {
-  listColumns[0].classList.add("over");
-  currentColumn[0] = column;
-  drag(e);
-  allowDrop(e);
-  drop(e);
-});
+function dragEnter(column) {
+    listColumns[column].classList.add('over');
+    currentColumn = column;
+  }
 
 function drag(e) {
   draggedItem = e.target;

@@ -15,8 +15,8 @@
           <span class="header">
             <h1>To Do</h1>
           </span>
-          <div id="todo-content">
-            <ul class="drag-item-list" id="todo-list"></ul>
+          <div id="todo-content" class="draggable-container">
+            <ul class="drag-item-list" id="todo-list" ondrop="drop(event)" ondragover="allowDrop(event)" ondragenter="dragEnter(0)"></ul>
           </div>
           <div class="add-btn-group">
             <div class="add-btn">
@@ -32,8 +32,8 @@
           <span class="header">
             <h1>In Progress</h1>
           </span>
-          <div id="progress-content">
-            <ul class="drag-item-list" id="progress-list"></ul>
+          <div id="progress-content" class="draggable-container">
+            <ul class="drag-item-list" id="progress-list" ondrop="drop(event)" ondragover="allowDrop(event)" ondragenter="dragEnter(1)"></ul>
           </div>
           <div class="add-btn-group">
             <div class="add-btn">
@@ -49,8 +49,8 @@
           <span class="header">
             <h1>Complete</h1>
           </span>
-          <div id="complete-content">
-            <ul class="drag-item-list" id="complete-list"></ul>
+          <div id="complete-content" class="draggable-container">
+            <ul class="drag-item-list" id="complete-list" ondrop="drop(event)" ondragover="allowDrop(event)" ondragenter="dragEnter(2)"></ul>
           </div>
           <div class="add-btn-group">
             <div class="add-btn">
@@ -66,8 +66,8 @@
           <span class="header">
             <h1>Not Sure</h1>
           </span>
-          <div id="not-sure-content">
-            <ul class="drag-item-list" id="not-sure-list"></ul>
+          <div id="not-sure-content" class="draggable-container">
+            <ul class="drag-item-list" id="not-sure-list" ondrop="drop(event)" ondragover="allowDrop(event)" ondragenter="dragEnter(3)"></ul>
           </div>
           <div class="add-btn-group">
             <div class="add-btn">
