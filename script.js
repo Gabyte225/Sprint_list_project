@@ -2,6 +2,7 @@ const addBtns = document.querySelectorAll(".add-btn:not(.solid)");
 const saveItemBtns = document.querySelectorAll(".solid");
 const addTaskContainers = document.querySelectorAll(".add-container");
 const addTask = document.querySelectorAll("#add-task");
+const addTaskButton = document.querySelectorAll(".add-task-button");
 
 const listColumns = document.querySelectorAll(".drag-item-list");
 const todoListEl = document.querySelector("#todo-list");
@@ -62,6 +63,7 @@ function createItemEl(columnEl, column, item, index) {
 function updateDOM() {
   if (!updatedOnLoad) {
     getSavedColumns();
+    updatedOnLoad = true;
   }
 
   todoListEl.textContent = "";
@@ -88,7 +90,6 @@ function updateDOM() {
   });
   notSureListArray = filterArray(notSureListArray);
 
-  updatedOnLoad = true;
   updateSavedColumns();
 }
 
@@ -96,21 +97,78 @@ function addToColumn(column) {
   const itemText = addTask[column].value;
   const selectedArray = listArrays[column];
   selectedArray.push(itemText);
-  addTask[column].textContent = "";
+  addTask[column].value = "";
   updateDOM(column);
 }
+addTaskButton.forEach((button, i) =>
+  button.addEventListener("click", (e) => {
+    e.target.classList.remove("add-task-button");
+    e.target.classList.add("add-button-active");
+    saveItemBtns[i].classList.remove("solid");
+    saveItemBtns[i].classList.add("saveItemBtns-active");
+    addTaskContainers[i].classList.remove("add-container");
+    addTaskContainers[i].classList.add("addTaskContainers-active");
+  })
+);
 
-function showInputBox(column) {
-  addBtns[column].style.visibility = "hidden";
-  saveItemBtns[column].style.display = "flex";
-  addTaskContainers[column].style.display = "flex";
+saveItemBtns.forEach((button, i) =>
+  button.addEventListener("click", (e) => {
+    addTaskButton[i].classList.remove("add-button-active");
+    addTaskButton[i].classList.add("add-task-button");
+    e.target.classList.remove("saveItemBtns-active");
+    e.target.classList.add("solid");
+    addTaskContainers[i].classList.remove("addTaskContainers-active");
+    addTaskContainers[i].classList.add("add-container");
+    addToColumn([i]);
+  })
+);
+
+function rebuildArrays() {
+  todoListArray = [];
+  for (let i = 0; i < todoListEl.children.length; i++) {
+    todoListArray.push(todoListEl.children[i].value);
+  }
+  progressListArray = [];
+  for (let i = 0; i < progressListEl.children.length; i++) {
+    progressListArray.push(progressListEl.children[i].value);
+  }
+  completeListArray = [];
+  for (let i = 0; i < completeListEl.children.length; i++) {
+    completeListArray.push(completeListEl.children[i].value);
+  }
+  notSureListArray = [];
+  for (let i = 0; i < notSureListEl.children.length; i++) {
+    notSureListArray.push(notSureListEl.children[i].value);
+  }
+  updateDOM();
 }
 
-function hideInputBox(column) {
-  addBtns[column].style.visibility = "visible";
-  saveItemBtns[column].style.display = "none";
-  addTaskContainers[column].style.display = "none";
-  addToColumn(column);
+listColumns[0].addEventListener("dragstart", (e) => {
+  listColumns[0].classList.add("over");
+  currentColumn[0] = column;
+  drag(e);
+  allowDrop(e);
+  drop(e);
+});
+
+function drag(e) {
+  draggedItem = e.target;
+  dragging = true;
+}
+
+function allowDrop(e) {
+  e.preventDefault();
+}
+
+function drop(e) {
+  e.preventDefault();
+  const parent = listColumns[currentColumn];
+  listColumns.forEach((column) => {
+    column.classList.remove("over");
+  });
+  parent.appendChild(draggedItem);
+  dragging = false;
+  rebuildArrays();
 }
 
 updateDOM();

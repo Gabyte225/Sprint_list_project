@@ -123,7 +123,7 @@ li {
   justify-content: space-between;
 }
 
-.add-btn {
+.add-task-button {
   margin: 10px;
   padding: 5px 10px;
   display: flex;
@@ -136,17 +136,26 @@ li {
   color: white;
 }
 
-.add-btn:hover {
-  background-color: rgba(255, 255, 255, 0.9);
-  color: black;
-}
-
-.add-btn:active {
-  transform: scale(0.97);
-}
 
 .solid {
   display: none;
+}
+
+.add-button-active {
+    visibility: hidden;
+}
+
+.saveItemBtns-active {
+    display: flex;
+}
+
+.addTaskContainers-active {
+    display: flex;
+    margin: 10px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  min-height: 100px;
 }
 
 .solid:hover {
@@ -163,11 +172,7 @@ li {
 }
 
 .add-container {
-  margin: 10px;
-  padding: 5px 10px;
-  border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.9);
-  min-height: 100px;
+  
   display: none;
 }
 
