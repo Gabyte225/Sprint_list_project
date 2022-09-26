@@ -10,7 +10,7 @@ body {
   font-family: Quicksand, sans-serif;
   display: flex;
   flex-direction: column;
-  gap: 200px;
+  gap: 170px;
 }
 h1 {
   letter-spacing: 2px;
@@ -136,22 +136,21 @@ li {
   color: white;
 }
 
-
 .solid {
   display: none;
 }
 
 .add-button-active {
-    visibility: hidden;
+  visibility: hidden;
 }
-
 .saveItemBtns-active {
-    display: flex;
+  background-color: rgb(184, 87, 184);
+  width: fit-content;
+  margin-right: 10px;
 }
-
 .addTaskContainers-active {
-    display: flex;
-    margin: 10px;
+  display: flex;
+  margin: 10px;
   padding: 5px 10px;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.9);
@@ -172,20 +171,14 @@ li {
 }
 
 .add-container {
-  
   display: none;
 }
 
 .add-task {
-  width: 100%;
-  min-height: 100px;
-  height: auto;
   background-color: white;
   border-radius: 10px;
   margin: 5px auto;
-  resize: none;
   color: black;
-  padding: 10px;
 }
 
 .add-task:focus {
@@ -203,11 +196,11 @@ li {
   background: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
+  margin-bottom: 10px;
 }
 
 .input-container {
   position: relative;
-  /* top: 20px; */
 }
 .end-of-sprint {
   color: white;
@@ -225,23 +218,21 @@ label {
 
 input {
   width: 95%;
-  margin-bottom: 10px;
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 20px;
+  border-radius: 5px;
   background: #fff;
-  outline: none;
   font-family: Nunito, sans-serif;
 }
 
 button {
   width: 100%;
   height: 40px;
-  border-radius: 20px;
+  border-radius: 5px;
   margin-top: 15px;
   border: none;
   text-transform: uppercase;
-  background: #006959;
+  background: #44978b;
   color: white;
   cursor: pointer;
   outline: none;
@@ -250,11 +241,25 @@ button {
 button:hover {
   filter: brightness(110%);
 }
-.complete {
-  position: relative;
-  top: 60px;
+.countdown-clock {
+  margin-left: -45px;
 }
 
-.complete-title {
-  animation: complete 4s infinite;
+.list {
+  display: inline-block;
+  font-size: 20px;
+  list-style-type: none;
+  padding: 10px;
+  text-transform: uppercase;
+}
+
+.span-list {
+  display: block;
+  font-size: 30px;
+  text-align: center;
+}
+.complete {
+  position: relative;
+  color: white;
+  text-align: center;
 }
