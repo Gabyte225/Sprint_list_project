@@ -115,7 +115,7 @@ function addToColumn(column) {
   const itemText = addTask[column].value;
   const selectedArray = listArrays[column];
   if (addTask[column].value != "") {
-    addTask[column].value = '';
+    addTask[column].value = "";
     selectedArray.push(itemText);
   }
 
@@ -164,29 +164,36 @@ function rebuildArrays() {
   updateDOM();
 }
 
-function dragEnter(column) {
-  currentColumn = column;
-}
+listColumns.forEach((drag, i) =>
+  drag.addEventListener("dragenter", (e) => {
+    currentColumn = e.target.column;
+    listColumns[i].classList.add("over");
+  })
+);
 
 function drag(e) {
   draggedItem = e.target;
   dragging = true;
 }
 
-function allowDrop(e) {
-  e.preventDefault();
-}
+listColumns.forEach((ondragover) =>
+  ondragover.addEventListener("dragover", (e) => {
+    e.preventDefault();
+  })
+);
 
-function drop(e) {
-  e.preventDefault();
-  const parent = listColumns[currentColumn];
-  listColumns.forEach((column) => {
-    column.classList.remove("over");
-  });
-  parent.appendChild(draggedItem);
-  dragging = false;
-  rebuildArrays();
-}
+listColumns.forEach((drop, i) =>
+  drop.addEventListener("drop", (e) => {
+    e.preventDefault();
+    const parent = listColumns[i];
+    listColumns.forEach((column) => {
+      column.classList.remove("over");
+    });
+    parent.appendChild(draggedItem);
+    dragging = false;
+    rebuildArrays();
+  })
+);
 
 updateDOM();
 
